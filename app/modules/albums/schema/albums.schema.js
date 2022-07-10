@@ -20,20 +20,29 @@ type Album {
   image: String
 }
 
-input InputAlbum {
-  name: String
-  released: Int
-  image: String
-}
-
 type Query {
     album(id: ID!): Album
     albums(limit: Int, offset: Int): [Album]
   }
 
 type Mutation {
-    createAlbum(input: InputAlbum): Album
+    createAlbum( 
+      name: String
+      released: Int
+      artists: [ID]
+      bands: [ID]
+      tracks: [ID]
+      genres: [ID]
+      image: String): Album
     deleteAlbum(input: ID!): Album
-    updateAlbum(input: InputAlbum): Album
+    updateAlbum(
+      id: ID!
+      name: String
+      released: Int
+      artists: [ID]
+      bands: [ID]
+      tracks: [ID]
+      genres: [ID]
+      image: String): Album
   }
 `; 

@@ -8,14 +8,14 @@ export const resolversGenre = {
         }      
     }, 
     Mutation : {
-        createGenre: async ( _, { input }, { dataSources }) => {  
-            return dataSources.genreAPI.create( input );
+        createGenre: async ( _, args, { dataSources }) => {  
+            return dataSources.genreAPI.create( args );
         },
         deleteGenre: async ( _, { id }, { dataSources } ) => {
             return dataSources.genreAPI.delete( id );
         },
-        updateGenre: async ( _, { input }, { dataSources }) => {  
-            return dataSources.genreAPI.update( input );
+        updateGenre: async ( _, { id, ...args }, { dataSources }) => {  
+            return dataSources.genreAPI.update( id, args );
         },
     }
 }

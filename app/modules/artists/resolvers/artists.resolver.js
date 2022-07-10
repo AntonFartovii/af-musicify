@@ -9,14 +9,14 @@ export const resolversArtist = {
         }      
     }, 
     Mutation : {
-        createArtist: async ( _, { input }, { dataSources }) => {  
-            return dataSources.artistAPI.create( input );
+        createArtist: async ( _,  args , { dataSources }) => {  
+            return dataSources.artistAPI.create( args );
         },
         deleteArtist: async ( _, { id }, { dataSources } ) => {
             return dataSources.artistAPI.delete( id );
         },
-        updateArtist: async ( _, { input }, { dataSources }) => {  
-            return dataSources.artistAPI.update( input );
+        updateArtist: async ( _, { id, ...args}, { dataSources }) => {  
+            return dataSources.artistAPI.update( id, args  );
         },
     }
 }

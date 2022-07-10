@@ -1,4 +1,5 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+import { MyRestDataSource } from '../MyRestDataSource.js';
 import 'dotenv/config'
 
 // Querys
@@ -9,46 +10,9 @@ import 'dotenv/config'
 // deleteBand
 // updateBand
 
-export class BandAPI extends RESTDataSource {
+export class BandAPI extends MyRestDataSource {
     constructor() {
         super();
-        this.baseURL = process.env.ARTISTS_URL;
+        this.baseURL = process.env.BANDS_URL;
       }
-
-    async getById( id ) {
-        return this.get(
-            `/${encodeURIComponent(id)}`
-        );
-    }
-
-    async getAll( limit = 5, offset = 5 ) {
-        const data = await this.get('/', {
-            per_page: limit,
-          });
-          return data.items;
-    }
-
-    async create( input ) {
-        return this.post(
-            `/`,
-            {     
-              
-            }
-        )
-    }
-
-    async update( input ) {
-        return this.put(
-            `/${encodeURIComponent(id)}`,
-            {     
-             
-            }
-        )
-    }
-
-    async delete( id ) {
-        return this.delete(
-            `/${encodeURIComponent(id)}`
-        )
-    }
 }

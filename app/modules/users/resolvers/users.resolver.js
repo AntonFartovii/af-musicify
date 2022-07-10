@@ -6,7 +6,7 @@ export const resolversUsers = {
             return dataSources.userAPI.login( login );
             },
         user: async (_, { id }, { dataSources }) => {
-            return dataSources.userAPI.findUser( id );
+            return dataSources.userAPI.getById( id );
         }      
     }, 
     Mutation : {

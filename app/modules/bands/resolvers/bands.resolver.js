@@ -9,14 +9,14 @@ export const resolversBand = {
         }      
     }, 
     Mutation : {
-        createBand: async ( _, { input }, { dataSources }) => {  
-            return dataSources.bandAPI.create( input );
+        createBand: async ( _, args , { dataSources }) => {  
+            return dataSources.bandAPI.create( args);
         },
         deleteBand: async ( _, { id }, { dataSources } ) => {
             return dataSources.bandAPI.delete( id );
         },
-        updateBand: async ( _, { input }, { dataSources }) => {  
-            return dataSources.bandAPI.update( input );
+        updateBand: async ( _, { id, ...args }, { dataSources }) => {  
+            return dataSources.bandAPI.update( id, args );
         },
     }
 }

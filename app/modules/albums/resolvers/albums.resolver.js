@@ -9,14 +9,14 @@ export const resolversAlbum = {
         }      
     }, 
     Mutation : {
-        createAlbum: async ( _, { input }, { dataSources }) => {  
-            return dataSources.albumAPI.create( input );
+        createAlbum: async ( _, args, { dataSources }) => {  
+            return dataSources.albumAPI.create( args );
         },
         deleteAlbum: async ( _, { id }, { dataSources } ) => {
             return dataSources.albumAPI.delete( id );
         },
-        updateAlbum: async ( _, { input }, { dataSources }) => {  
-            return dataSources.albumAPI.update( input );
+        updateAlbum: async ( _, { id, ...args } , { dataSources }) => {  
+            return dataSources.albumAPI.update( id, args );
         },
     }
 }

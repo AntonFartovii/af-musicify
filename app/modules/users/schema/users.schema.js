@@ -19,8 +19,8 @@ type Query {
   }
 
 input LoginInput {
-    mail: String! 
-    pass: String!
+    email: String! 
+    password: String!
 }
 
 input UserInput {

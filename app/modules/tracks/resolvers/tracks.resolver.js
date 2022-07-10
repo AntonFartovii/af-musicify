@@ -9,14 +9,14 @@ export const resolversTrack = {
         }      
     }, 
     Mutation : {
-        createTrack: async ( _, { track }, { dataSources }) => {  
-            return dataSources.trackAPI.create( track );
+        createTrack: async ( _, args , { dataSources }) => {  
+            return dataSources.trackAPI.create( args );
         },
         deleteTrack: async ( _, { id }, { dataSources } ) => {
             return dataSources.trackAPI.delete( id );
         },
-        updateTrack: async ( _, { track }, { dataSources }) => {  
-            return dataSources.trackAPI.update( track );
+        updateTrack: async ( _, { id, ...args}, { dataSources }) => {  
+            return dataSources.trackAPI.update( id, args );
         },
     }
 }

@@ -9,17 +9,24 @@ import { gql } from "apollo-server";
 
 export const typeDefsTracks = gql`
 type Track {
-    id: ID!
+    _id: ID!
     title: String!
+    album: Album
+    artists: [Artist]
+    bands: [Band]
     duration: Int
     released: Int
-    artists: [Artist]
+    genres: [Genre]
 }
 
 input InputTrack {
     title: String!
+    albumId: ID
+    bandsIds: [ID]
+    artistsIds: [ID]
     duration: Int
     released: Int
+    genresIds: [ID]
 }
 
 type Query {
@@ -28,8 +35,23 @@ type Query {
   }
 
 type Mutation {
-    createTrack(track: InputTrack): Track
+    createTrack(  
+      title: String!
+      albumId: ID
+      bandsIds: [ID]
+      artistsIds: [ID]
+      duration: Int
+      released: Int
+      genresIds: [ID]): Track
     deleteTrack(id: ID!): Track
-    updateTrack(track: InputTrack): Track
+    updateTrack(
+      id: ID!
+      title: String
+      albumId: ID
+      bandsIds: [ID]
+      artistsIds: [ID]
+      duration: Int
+      released: Int
+      genresIds: [ID]): Track
   }
 `; 
